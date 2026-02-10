@@ -17,76 +17,95 @@ use Laravel\Fortify\Fortify;
 
 class FortifyServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
     public function register(): void
     {
         $request = request();
-        if($request->is('admin/*')){
-            Config::set('fortify.guard','admin');
-            Config::set('fortify.passwords','admins');
-            Config::set('fortify.home','/dashboard');
-            Config::set('fortify.prefix','/admin');
+
+        // Admin Panel Config
+        if ($request->is('admin/*')) {
+            Config::set('fortify.guard', 'admin');
+            Config::set('fortify.passwords', 'admins');
+            Config::set('fortify.prefix', 'admin');
+        } else {
+            Config::set('fortify.guard', 'web');
+            Config::set('fortify.passwords', 'users');
         }
     }
 
-    /**
-     * Bootstrap any application services.
-     */
-  public function boot(): void
-{
-    Fortify::createUsersUsing(CreateNewUser::class);
-    Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
-    Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
-    Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
-    Fortify::redirectUserForTwoFactorAuthenticationUsing(RedirectIfTwoFactorAuthenticatable::class);
-
-    RateLimiter::for('login', function (Request $request) {
-        $throttleKey = Str::lower($request->input(Fortify::username())).'|'.$request->ip();
-        return Limit::perMinute(5)->by($throttleKey);
-    });
-
-    RateLimiter::for('two-factor', function (Request $request) {
-        return Limit::perMinute(5)->by($request->session()->get('login.id'));
-    });
-
-    Fortify::redirects('login', function (Request $request) {
-        $user = auth()->user();
-
-        if ($user && $user->super_admin) {
-            return route('admin.dashboard');
-        }
-
-        return route('admin.dashboard');
-    });
-
-    Fortify::loginView(function () {
-        return view('auth.login');
-    });
-
-    Fortify::registerView(function () {
-        return view('auth.register');
-    });
-
-    Fortify::requestPasswordResetLinkView(function () {
-        return view('auth.forgot-password');
-    });
-
-    Fortify::resetPasswordView(function ($request) {
-        return view('auth.reset-password', ['request' => $request]);
-    });
-
-
-    if(Config::get('fortify.guard') == 'admin'){
-        Fortify::viewPrefix('auth.');
-    }
-    else
+    public function boot(): void
     {
-        Fortify::viewPrefix('front.auth.');
+        Fortify::createUsersUsing(CreateNewUser::class);
+        Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
+        Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
+        Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
+        Fortify::redirectUserForTwoFactorAuthenticationUsing(RedirectIfTwoFactorAuthenticatable::class);
+
+        /*
+        |--------------------------------------------------------------------------
+        | Login Rate Limit
+        |--------------------------------------------------------------------------
+        */
+        RateLimiter::for('login', function (Request $request) {
+            $throttleKey = Str::lower($request->input(Fortify::username())) . '|' . $request->ip();
+            return Limit::perMinute(5)->by($throttleKey);
+        });
+
+        RateLimiter::for('two-factor', function (Request $request) {
+            return Limit::perMinute(5)->by($request->session()->get('login.id'));
+        });
+
+        /*
+        |--------------------------------------------------------------------------
+        | 🔥 Redirect After Login (المهم)
+        |--------------------------------------------------------------------------
+        */
+        Fortify::redirects('login', function (Request $request) {
+
+            $user = auth()->user();
+
+            if (!$user) {
+                return '/';
+            }
+
+            // لو عندك spatie roles
+            if ($user->hasRole('admin')) {
+                return '/admin/dashboard';
+            }
+
+            // المستخدم العادي يرجع للواجهة
+            return '/';
+        });
+
+        /*
+        |--------------------------------------------------------------------------
+        | Auth Views
+        |--------------------------------------------------------------------------
+        */
+        Fortify::loginView(function () {
+            return view('auth.login');
+        });
+
+        Fortify::registerView(function () {
+            return view('auth.register');
+        });
+
+        Fortify::requestPasswordResetLinkView(function () {
+            return view('auth.forgot-password');
+        });
+
+        Fortify::resetPasswordView(function ($request) {
+            return view('auth.reset-password', ['request' => $request]);
+        });
+
+        /*
+        |--------------------------------------------------------------------------
+        | View Prefix
+        |--------------------------------------------------------------------------
+        */
+        if (Config::get('fortify.guard') == 'admin') {
+            Fortify::viewPrefix('auth.');
+        } else {
+            Fortify::viewPrefix('front.auth.');
+        }
     }
-
-
-}
-
 }

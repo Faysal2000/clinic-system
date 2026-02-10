@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{config('app.name')}}</title>
-  <link rel="shortcut icon" type="image/png" href="{{asset('admin/assets/images/logos/favicon.png')}}" />
-  <link rel="stylesheet" href="{{asset('admin/assets/css/styles.min.css')}}" />
+  <link rel="shortcut icon" type="image/png" href="{{asset('assets/admin/images/logos/favicon.png')}}" />
+  <link rel="stylesheet" href="{{asset('assets/admin/css/styles.min.css')}}" />
 </head>
 
 <body>
@@ -19,7 +19,7 @@
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
           <a href="./index.html" class="text-nowrap logo-img">
-            <img src="{{asset('admin/assets/images/logos/dark-logo.svg')}}" width="180" alt="" />
+            <img src="{{asset('assets/admin/images/logos/dark-logo.svg')}}" width="180" alt="" />
           </a>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
             <i class="ti ti-x fs-8"></i>
@@ -136,7 +136,7 @@
                 <a href="https://adminmart.com/product/modernize-bootstrap-5-admin-template/" target="_blank" class="btn btn-primary fs-2 fw-semibold lh-sm">Buy Pro</a>
               </div>
               <div class="unlimited-access-img">
-                <img src="{{asset('admin/assets/images/backgrounds/rocket.png')}}" alt="" class="img-fluid">
+                <img src="{{asset('assets/admin/images/backgrounds/rocket.png')}}" alt="" class="img-fluid">
               </div>
             </div>
           </div>
@@ -170,7 +170,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
                   aria-expanded="false">
-                  <img src="{{asset('admin/assets/images/profile/user-1.jpg')}}" alt="" width="35" height="35" class="rounded-circle">
+                  <img src="{{asset('assets/admin/images/profile/user-1.jpg')}}" alt="" width="35" height="35" class="rounded-circle">
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                   <div class="message-body">
@@ -462,7 +462,7 @@
           <div class="col-sm-6 col-xl-3">
             <div class="card overflow-hidden rounded-2">
               <div class="position-relative">
-                <a href="javascript:void(0)"><img src="{{asset('admin/assets/images/products/s4.jpg')}}" class="card-img-top rounded-0" alt="..."></a>
+                <a href="javascript:void(0)"><img src="{{asset('assets/admin/images/products/s4.jpg')}}" class="card-img-top rounded-0" alt="..."></a>
                 <a href="javascript:void(0)" class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i class="ti ti-basket fs-4"></i></a>                      </div>
               <div class="card-body pt-3 p-4">
                 <h6 class="fw-semibold fs-4">Boat Headphone</h6>
@@ -482,7 +482,7 @@
           <div class="col-sm-6 col-xl-3">
             <div class="card overflow-hidden rounded-2">
               <div class="position-relative">
-                <a href="javascript:void(0)"><img src="{{asset('admin/assets/images/products/s5.jpg')}}" class="card-img-top rounded-0" alt="..."></a>
+                <a href="javascript:void(0)"><img src="{{asset('assets/admin/images/products/s5.jpg')}}" class="card-img-top rounded-0" alt="..."></a>
                 <a href="javascript:void(0)" class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i class="ti ti-basket fs-4"></i></a>                      </div>
               <div class="card-body pt-3 p-4">
                 <h6 class="fw-semibold fs-4">MacBook Air Pro</h6>
@@ -502,7 +502,7 @@
           <div class="col-sm-6 col-xl-3">
             <div class="card overflow-hidden rounded-2">
               <div class="position-relative">
-                <a href="javascript:void(0)"><img src="{{asset('admin/assets/images/products/s7.jpg')}}" class="card-img-top rounded-0" alt="..."></a>
+                <a href="javascript:void(0)"><img src="{{asset('assets/admin/images/products/s7.jpg')}}" class="card-img-top rounded-0" alt="..."></a>
                 <a href="javascript:void(0)" class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i class="ti ti-basket fs-4"></i></a>                      </div>
               <div class="card-body pt-3 p-4">
                 <h6 class="fw-semibold fs-4">Red Valvet Dress</h6>
@@ -522,7 +522,7 @@
           <div class="col-sm-6 col-xl-3">
             <div class="card overflow-hidden rounded-2">
               <div class="position-relative">
-                <a href="javascript:void(0)"><img src="{{asset('admin/assets/images/products/s11.jpg')}}" class="card-img-top rounded-0" alt="..."></a>
+                <a href="javascript:void(0)"><img src="{{asset('assets/admin/images/products/s11.jpg')}}" class="card-img-top rounded-0" alt="..."></a>
                 <a href="javascript:void(0)" class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i class="ti ti-basket fs-4"></i></a>                      </div>
               <div class="card-body pt-3 p-4">
                 <h6 class="fw-semibold fs-4">Cute Soft Teddybear</h6>
@@ -546,13 +546,13 @@
       </div>
     </div>
   </div>
-  <script src="{{asset('admin/assets/libs/jquery/dist/jquery.min.js')}}"></script>
-  <script src="{{asset('admin/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
-  <script src="{{asset('admin/assets/js/sidebarmenu.js')}}"></script>
-  <script src="{{asset('admin/assets/js/app.min.js')}}"></script>
-  <script src="{{asset('admin/assets/libs/apexcharts/dist/apexcharts.min.js')}}"></script>
-  <script src="{{asset('admin/assets/libs/simplebar/dist/simplebar.js')}}"></script>
-  <script src="{{asset('admin/assets/js/dashboard.js')}}"></script>
+  <script src="{{asset('assets/admin/libs/jquery/dist/jquery.min.js')}}"></script>
+  <script src="{{asset('assets/admin/libs/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{asset('assets/admin/js/sidebarmenu.js')}}"></script>
+  <script src="{{asset('assets/admin/js/app.min.js')}}"></script>
+  <script src="{{asset('assets/admin/libs/apexcharts/dist/apexcharts.min.js')}}"></script>
+  <script src="{{asset('assets/admin/libs/simplebar/dist/simplebar.js')}}"></script>
+  <script src="{{asset('assets/admin/js/dashboard.js')}}"></script>
 </body>
 
 </html>

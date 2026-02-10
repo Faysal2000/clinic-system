@@ -7,8 +7,8 @@
     <title>@yield('title', 'Clinic System')</title>
 
     {{-- Global CSS --}}
-    <link rel="shortcut icon" type="image/png" href="{{ asset('admin/assets/images/logos/favicon.png') }}" />
-    <link rel="stylesheet" href="{{ asset('admin/assets/css/styles.min.css') }}" />
+    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/admin/images/logos/favicon.png') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/admin/css/styles.min.css') }}" />
     {{-- Stack Styles --}}
     @stack('styles')
 </head>
